@@ -17,7 +17,7 @@ public class Ticket{
 	}
 
 	public void setId(int id){
-		return this.id = id;
+		this.id = id;
 	}
 
 	public int getVehicleId(){
