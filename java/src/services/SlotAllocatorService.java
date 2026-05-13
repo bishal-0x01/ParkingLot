@@ -8,7 +8,8 @@ import entities.*;
 
 public class SlotAllocatorService{
 
-	public ParkingSpot findSpot(VehicleType vehicleType){
+	public ParkingSpot findSpot(Vehicle vehicle){
+		VehicleType vehicleType = vehicle.getVehicleType();
 		ParkingLot parkingLot = ParkingLot.getInstance();
 		List<Floors> floors = parkingLot.getFloors();
 
