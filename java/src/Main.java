@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.*;
 import entities.*;
 import constants.*;
-
+import services.EntryGateService;
+import services.ExitGateService;
 
 
 public class Main{
@@ -12,17 +13,17 @@ public class Main{
 	public static void main(String [] args) throws Exception{
 		System.out.println("Hello World!!!");
 
-		Floors floor = new Floors();
-		floor.setId(1);
-		floor.setFullyOccupied(true);
+		ParkingLot.getInstance().init(3, 10, 20, 5);
+		Vehicle car = new Vehicle();
+		car.setId(1);
+		car.setVehicleType(VehicleType.CAR);
 
-		System.out.println(floor.getId());
+		EntryGateService entry = new EntryGateService();
+		Ticket ticket = entry.generateTicket(car);
 
-		ParkingSpot spot = new ParkingSpot();
-
-		spot.setSpotType(SpotType.MEDIUM);
-
-		System.out.println(spot.getSpotType().toString());
+		ExitGateService exit = new ExitGateService();
+		String result = exit.freeSpot(ticket, FeeStrategyEnum.HOUR);
+		System.out.println(result);
 
 	}
 }
