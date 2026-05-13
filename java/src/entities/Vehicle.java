@@ -14,7 +14,7 @@ public class Vehicle{
 	}
 
 	public void setId(int id){
-		return this.id = id;
+		this.id = id;
 	}
 
 	public VehicleType getVehicleType(){

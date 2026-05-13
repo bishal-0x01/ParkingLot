@@ -13,9 +13,26 @@ public class SlotAllocatorService{
 		List<Floors> floors = parkingLot.getFloors();
 
 		for(Floors floor : floors){
-			
+			List<ParkingSpot> spots = floor.getParkingSpotList();
+
+			for(ParkingSpot spot : spots){
+				if(!spot.isOccupied() && isSpotSuitable(spot.getSpotType(), vehicleType)){
+					return spot;
+				}
+			}
 		}
 
-	} 
+		return null;
+
+	}
+
+	private boolean isSpotSuitable(SpotType spotType, VehicleType vehicleType) {
+        return switch (vehicleType) {
+            case BIKE -> spotType == SpotType.SMALL; // Motorcycles can park in any spot
+            case CAR -> spotType == SpotType.MEDIUM;
+            case TRUCK -> spotType == SpotType.LARGE;
+            default -> false;
+        };
+	}
 
 }

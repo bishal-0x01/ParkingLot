@@ -15,6 +15,14 @@ public class ParkingSpot{
 		return this.id;
 	}
 
+	public int getFloorId() {
+		return floorId;
+	}
+
+	public void setFloorId(int floorId) {
+		this.floorId = floorId;
+	}
+
 	public boolean isOccupied(){
 		return this.occupied;
 	}
